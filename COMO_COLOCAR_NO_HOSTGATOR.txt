@@ -1,0 +1,283 @@
+================================================================================
+    COMO COLOCAR O SITE SOLLUTA HUB NO HOSTGATOR
+    Guia Simples Passo a Passo
+================================================================================
+
+Olá! Este guia vai te ajudar a colocar o site Solluta Hub no HostGator de 
+forma bem simples. Não precisa ser técnico, só seguir os passos!
+
+================================================================================
+    O QUE VOCÊ VAI PRECISAR
+================================================================================
+
+1. Uma conta no HostGator (já deve ter isso)
+2. O domínio sollutasolucoes.com.br configurado no HostGator
+3. Um computador com o projeto Solluta Hub
+4. Paciência (vai dar certo!)
+
+================================================================================
+    PASSO 1: PREPARAR OS ARQUIVOS NO SEU COMPUTADOR
+================================================================================
+
+1. Abra o terminal ou prompt de comando no seu computador
+   (No Windows: aperte Windows + R, digite "cmd" e aperte Enter)
+
+2. Navegue até a pasta do projeto Solluta Hub
+   Digite: cd C:\Users\Gyldeon\Documents\PROJETOS\Solluta-Hub
+   (Ajuste o caminho se estiver em outro lugar)
+
+3. Instale as dependências (se ainda não fez)
+   Digite: npm install
+   Espere terminar (pode demorar alguns minutos)
+
+4. Crie os arquivos prontos para colocar no servidor
+   Digite: npm run build
+   Espere terminar (vai criar uma pasta chamada "dist")
+
+5. Pronto! Agora você tem uma pasta "dist" com todos os arquivos prontos!
+
+================================================================================
+    PASSO 2: ENTRAR NO PAINEL DO HOSTGATOR (cPanel)
+================================================================================
+
+1. Abra seu navegador (Chrome, Firefox, etc.)
+
+2. Acesse o site do HostGator e faça login na sua conta
+
+3. Procure por "cPanel" ou "Painel de Controle" e clique
+
+4. Você vai ver várias opções. Procure por "Gerenciador de Arquivos" 
+   (geralmente está na seção "Arquivos")
+
+5. Clique em "Gerenciador de Arquivos"
+
+================================================================================
+    PASSO 3: LIMPAR A PASTA ONDE VAI FICAR O SITE
+================================================================================
+
+IMPORTANTE: Antes de começar, faça um backup se já tiver algo no site!
+
+1. No Gerenciador de Arquivos, procure pela pasta chamada "public_html"
+   (ou "www" - depende da configuração)
+
+2. Entre dentro da pasta "public_html"
+
+3. Selecione TODOS os arquivos que estão lá dentro
+   (Clique no primeiro, segure Shift e clique no último)
+
+4. Clique com o botão direito e escolha "Excluir" ou "Delete"
+   (Mas NÃO delete a pasta public_html, só os arquivos dentro dela)
+
+5. Confirme que quer deletar
+
+================================================================================
+    PASSO 4: ENVIAR OS ARQUIVOS PARA O SERVIDOR
+================================================================================
+
+OPÇÃO A - Pelo Gerenciador de Arquivos (Mais Fácil):
+
+1. Ainda dentro da pasta "public_html", clique no botão "Upload" 
+   (geralmente fica no topo da tela)
+
+2. Vai abrir uma janela. Clique em "Selecionar Arquivos"
+
+3. Navegue até a pasta "dist" do seu projeto no computador
+   (C:\Users\Gyldeon\Documents\PROJETOS\Solluta-Hub\dist)
+
+4. Selecione TODOS os arquivos e pastas dentro da pasta "dist"
+   (Pode selecionar tudo de uma vez segurando Ctrl+A)
+
+5. Clique em "Abrir" ou "Enviar"
+
+6. Espere todos os arquivos serem enviados (pode demorar alguns minutos)
+
+7. Quando terminar, feche a janela de upload
+
+
+OPÇÃO B - Por FTP (Se preferir ou se a opção A não funcionar):
+
+1. Baixe um programa de FTP (recomendo FileZilla - é grátis)
+
+2. No cPanel, procure por "Informações de FTP" ou "FTP Accounts"
+
+3. Anote:
+   - Servidor FTP (exemplo: ftp.sollutasolucoes.com.br)
+   - Usuário FTP
+   - Senha FTP
+
+4. Abra o FileZilla e conecte usando essas informações
+
+5. No lado esquerdo (seu computador), vá até a pasta "dist"
+
+6. No lado direito (servidor), vá até "public_html"
+
+7. Arraste todos os arquivos da pasta "dist" para a pasta "public_html"
+
+8. Espere terminar o upload
+
+================================================================================
+    PASSO 5: CRIAR O ARQUIVO .htaccess (MUITO IMPORTANTE!)
+================================================================================
+
+Este arquivo é necessário para o site funcionar direito!
+
+1. Ainda no Gerenciador de Arquivos, dentro da pasta "public_html"
+
+2. Procure por um botão que diz "Novo Arquivo" ou "+ Arquivo" 
+   (geralmente fica no topo)
+
+3. Clique nele
+
+4. Digite o nome do arquivo: .htaccess
+   (Importante: começa com ponto!)
+
+5. Clique em "Criar Novo Arquivo"
+
+6. Vai abrir o arquivo. Cole o seguinte texto dentro dele:
+
+-------------------------------------------------------------------------------
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteBase /
+  RewriteRule ^index\.html$ - [L]
+  RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteCond %{REQUEST_FILENAME} !-d
+  RewriteRule . /index.html [L]
+</IfModule>
+
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/html text/plain text/xml text/css text/javascript application/javascript application/json
+</IfModule>
+
+<IfModule mod_expires.c>
+  ExpiresActive On
+  ExpiresByType image/jpg "access plus 1 year"
+  ExpiresByType image/jpeg "access plus 1 year"
+  ExpiresByType image/gif "access plus 1 year"
+  ExpiresByType image/png "access plus 1 year"
+  ExpiresByType image/svg+xml "access plus 1 year"
+  ExpiresByType text/css "access plus 1 month"
+  ExpiresByType application/javascript "access plus 1 month"
+  ExpiresByType application/pdf "access plus 1 month"
+</IfModule>
+-------------------------------------------------------------------------------
+
+7. Salve o arquivo (geralmente tem um botão "Salvar" ou "Save")
+
+================================================================================
+    PASSO 6: ATIVAR O CERTIFICADO SSL (HTTPS)
+================================================================================
+
+Isso deixa o site seguro (com o cadeado verde):
+
+1. No cPanel, procure por "SSL/TLS" ou "Let's Encrypt"
+
+2. Clique nele
+
+3. Procure pelo seu domínio (sollutasolucoes.com.br)
+
+4. Clique em "Instalar" ou "Ativar" ao lado do certificado gratuito
+
+5. Espere alguns minutos para ativar
+
+6. Depois, procure por uma opção que diz "Forçar HTTPS" ou "Force HTTPS"
+   e ative ela
+
+================================================================================
+    PASSO 7: TESTAR O SITE
+================================================================================
+
+1. Abra uma nova aba no navegador
+
+2. Digite: https://sollutasolucoes.com.br
+
+3. O site deve aparecer!
+
+4. Teste as páginas:
+   - https://sollutasolucoes.com.br/limpa-nome
+   - https://sollutasolucoes.com.br/superendividamento
+   - https://sollutasolucoes.com.br/previdenciario
+   - https://sollutasolucoes.com.br/revisao-veiculos
+
+5. Se todas funcionarem, PARABÉNS! Tudo certo!
+
+================================================================================
+    SE ALGO DER ERRADO (Troubleshooting)
+================================================================================
+
+PROBLEMA: Site aparece em branco
+SOLUÇÃO:
+- Verifique se o arquivo "index.html" está dentro de "public_html"
+- Verifique se o arquivo ".htaccess" está criado e tem o conteúdo certo
+- Limpe o cache do navegador (Ctrl+Shift+R ou Ctrl+F5)
+
+PROBLEMA: Página dá erro 404 quando clico nos links
+SOLUÇÃO:
+- Verifique se o arquivo ".htaccess" está criado corretamente
+- Certifique-se de que copiou TODOS os arquivos da pasta "dist"
+
+PROBLEMA: Imagens ou cores não aparecem
+SOLUÇÃO:
+- Verifique se copiou TODA a pasta "assets" que estava dentro de "dist"
+- Limpe o cache do navegador
+
+PROBLEMA: Site não carrega de jeito nenhum
+SOLUÇÃO:
+- Verifique se o domínio está apontando para o HostGator
+- Entre em contato com o suporte do HostGator
+- Verifique se todos os arquivos foram enviados corretamente
+
+================================================================================
+    COMO ATUALIZAR O SITE DEPOIS
+================================================================================
+
+Quando quiser fazer mudanças no site:
+
+1. Faça as alterações no seu computador
+
+2. Abra o terminal e vá até a pasta do projeto
+
+3. Digite: npm run build
+   (Isso cria os arquivos novos)
+
+4. Volte no Gerenciador de Arquivos do HostGator
+
+5. Delete os arquivos antigos de "public_html"
+
+6. Envie os arquivos novos da pasta "dist" novamente
+
+7. Pronto! Site atualizado!
+
+================================================================================
+    DICAS IMPORTANTES
+================================================================================
+
+✓ Sempre faça backup antes de mexer em algo
+✓ Não delete a pasta "public_html", só os arquivos dentro dela
+✓ O arquivo ".htaccess" é MUITO importante, não esqueça dele!
+✓ Use sempre HTTPS (com o cadeado verde)
+✓ Se tiver dúvidas, entre em contato com o suporte do HostGator
+
+================================================================================
+    RESUMO RÁPIDO
+================================================================================
+
+1. npm run build (no computador)
+2. Entrar no cPanel do HostGator
+3. Limpar a pasta public_html
+4. Enviar arquivos da pasta "dist"
+5. Criar arquivo .htaccess com o conteúdo certo
+6. Ativar SSL/HTTPS
+7. Testar o site
+
+================================================================================
+
+Pronto! Agora você sabe como colocar o site no HostGator!
+
+Se tiver alguma dúvida, consulte o suporte do HostGator ou peça ajuda
+a alguém com mais experiência.
+
+Boa sorte! 🚀
+
+================================================================================
+

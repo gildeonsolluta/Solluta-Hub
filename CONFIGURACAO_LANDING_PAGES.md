@@ -21,14 +21,16 @@ O repositório contém as seguintes landing pages:
 
 As URLs das landing pages são configuradas no arquivo `src/config/landingPages.ts`.
 
-### URLs Baseadas em GitHub Pages
+### URLs Locais (Mesmo Domínio)
 
-Se as landing pages estiverem hospedadas no GitHub Pages, as URLs serão:
+As landing pages são servidas como rotas locais no mesmo domínio:
 
-- Limpa Nome: `https://gildeonsolluta.github.io/Landing-Pages/LIMPA-NOME`
-- Superendividamento: `https://gildeonsolluta.github.io/Landing-Pages/SUPERENDIVIDAMENTO`
-- Previdenciário: `https://gildeonsolluta.github.io/Landing-Pages/PREVIDENCIÁRIO`
-- Busca e Apreensão: `https://gildeonsolluta.github.io/Landing-Pages/BUSCA%20E%20APREENSÃO`
+- **Limpa Nome**: `sollutasolucoes.com.br/limpa-nome`
+- **Superendividamento**: `sollutasolucoes.com.br/superendividamento`
+- **Previdenciário**: `sollutasolucoes.com.br/previdenciario`
+- **Revisão de Veículos**: `sollutasolucoes.com.br/revisao-veiculos`
+
+Todas as landing pages fazem parte do mesmo aplicativo React e são gerenciadas pelo React Router.
 
 ## Como Usar
 
@@ -41,22 +43,26 @@ import { LANDING_PAGES } from "@/config/landingPages";
 const limpaNomeUrl = LANDING_PAGES.LIMPA_NOME;
 ```
 
-## Redirecionamento Automático
+## Rotas Locais
 
-As rotas locais do site principal foram configuradas para redirecionar automaticamente para as landing pages externas:
+As landing pages são servidas diretamente como componentes React nas seguintes rotas:
 
-- `/limpa-nome` → Redireciona para `LANDING_PAGES.LIMPA_NOME`
-- `/superendividamento` → Redireciona para `LANDING_PAGES.SUPERENDIVIDAMENTO`
-- `/previdenciario` → Redireciona para `LANDING_PAGES.PREVIDENCIARIO`
-- `/revisao-veiculos` → Redireciona para `LANDING_PAGES.BUSCA_E_APREENSAO`
+- `/limpa-nome` → Componente `LimpaNome`
+- `/superendividamento` → Componente `Superendividamento`
+- `/previdenciario` → Componente `Previdenciario`
+- `/revisao-veiculos` → Componente `RevisaoVeiculos`
 
-O componente `RedirectToLandingPage` é usado para fazer o redirecionamento automático quando alguém acessa essas rotas.
+Todas as rotas são configuradas no arquivo `src/App.tsx` usando React Router.
 
 ## Componente de Serviços
 
 O componente `Servicos.tsx` foi atualizado para usar links externos que abrem as landing pages em uma nova aba. Os serviços agora são extensões do Solluta Hub, conectados às landing pages hospedadas no repositório GitHub.
 
+## Deploy
+
+Para fazer o deploy no HostGator, consulte o guia completo: [GUIA_DEPLOY_HOSTGATOR.md](../GUIA_DEPLOY_HOSTGATOR.md)
+
 ## Atualização
 
-Para atualizar as URLs das landing pages, edite o arquivo `src/config/landingPages.ts`.
+Para atualizar as rotas das landing pages, edite o arquivo `src/config/landingPages.ts` ou `src/App.tsx`.
 

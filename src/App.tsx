@@ -8,8 +8,10 @@ import NotFound from "./pages/NotFound";
 import PoliticaPrivacidade from "./pages/PoliticaPrivacidade";
 import TermosUso from "./pages/TermosUso";
 import CalculadoraSuperendividamento from "./pages/CalculadoraSuperendividamento";
-import RedirectToLandingPage from "./components/RedirectToLandingPage";
-import { LANDING_PAGES } from "./config/landingPages";
+import Superendividamento from "./pages/Superendividamento";
+import LimpaNome from "./pages/LimpaNome";
+import Previdenciario from "./pages/Previdenciario";
+import RevisaoVeiculos from "./pages/RevisaoVeiculos";
 
 const queryClient = new QueryClient();
 
@@ -23,24 +25,12 @@ const App = () => (
           <Route path="/" element={<Index />} />
           <Route path="/politica-de-privacidade" element={<PoliticaPrivacidade />} />
           <Route path="/termos-de-uso" element={<TermosUso />} />
-          {/* Redirecionamentos para landing pages externas */}
-          <Route 
-            path="/superendividamento" 
-            element={<RedirectToLandingPage url={LANDING_PAGES.SUPERENDIVIDAMENTO} />} 
-          />
-          <Route 
-            path="/limpa-nome" 
-            element={<RedirectToLandingPage url={LANDING_PAGES.LIMPA_NOME} />} 
-          />
-          <Route 
-            path="/previdenciario" 
-            element={<RedirectToLandingPage url={LANDING_PAGES.PREVIDENCIARIO} />} 
-          />
-          <Route 
-            path="/revisao-veiculos" 
-            element={<RedirectToLandingPage url={LANDING_PAGES.BUSCA_E_APREENSAO} />} 
-          />
-          {/* Calculadora ainda mantida localmente */}
+          {/* Landing Pages - Rotas locais no mesmo domínio */}
+          <Route path="/superendividamento" element={<Superendividamento />} />
+          <Route path="/limpa-nome" element={<LimpaNome />} />
+          <Route path="/previdenciario" element={<Previdenciario />} />
+          <Route path="/revisao-veiculos" element={<RevisaoVeiculos />} />
+          {/* Calculadora */}
           <Route path="/calculadora-superendividamento" element={<CalculadoraSuperendividamento />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />

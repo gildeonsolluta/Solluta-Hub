@@ -1,19 +1,22 @@
 /**
  * Configuração das URLs das Landing Pages
  * Repositório: https://github.com/gildeonsolluta/Landing-Pages.git
+ * 
+ * As landing pages são servidas como rotas locais no mesmo domínio:
+ * - sollutasolucoes.com.br/limpa-nome
+ * - sollutasolucoes.com.br/superendividamento
+ * - sollutasolucoes.com.br/previdenciario
+ * - sollutasolucoes.com.br/revisao-veiculos
  */
 
-// Base URL do GitHub Pages para o repositório de Landing Pages
-const GITHUB_PAGES_BASE_URL = "https://gildeonsolluta.github.io/Landing-Pages";
-
-// URLs das landing pages por serviço
+// Rotas locais das landing pages (mesmo domínio)
 export const LANDING_PAGES = {
-  LIMPA_NOME: `${GITHUB_PAGES_BASE_URL}/LIMPA-NOME`,
-  SUPERENDIVIDAMENTO: `${GITHUB_PAGES_BASE_URL}/SUPERENDIVIDAMENTO`,
-  PREVIDENCIARIO: `${GITHUB_PAGES_BASE_URL}/PREVIDENCIÁRIO`,
-  BUSCA_E_APREENSAO: `${GITHUB_PAGES_BASE_URL}/BUSCA%20E%20APREENSÃO`,
+  LIMPA_NOME: "/limpa-nome",
+  SUPERENDIVIDAMENTO: "/superendividamento",
+  PREVIDENCIARIO: "/previdenciario",
+  BUSCA_E_APREENSAO: "/revisao-veiculos",
 } as const;
 
-// Repositório GitHub
+// Repositório GitHub das landing pages (para referência)
 export const LANDING_PAGES_REPOSITORY = "https://github.com/gildeonsolluta/Landing-Pages.git";
 

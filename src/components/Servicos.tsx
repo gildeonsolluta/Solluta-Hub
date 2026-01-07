@@ -11,7 +11,7 @@ const servicos = [
       "Regularize sua situação cadastral e recupere seu crédito. Negociamos diretamente com credores para encontrar as melhores condições de quitação.",
     features: ["Análise completa de dívidas", "Garantia 1 ano de proteção", "Acompanhamento integral"],
     link: LANDING_PAGES.LIMPA_NOME,
-    external: true,
+    external: false,
   },
   {
     icon: FileText,
@@ -20,7 +20,7 @@ const servicos = [
       "Soluções personalizadas para reorganizar suas finanças e sair do ciclo de endividamento com planejamento estratégico.",
     features: ["Plano de pagamento viável", "Unificação de todas as dívidas", "Educação financeira"],
     link: LANDING_PAGES.SUPERENDIVIDAMENTO,
-    external: true,
+    external: false,
   },
   {
     icon: Car,
@@ -29,7 +29,7 @@ const servicos = [
       "Análise detalhada de contratos de financiamento veicular para identificar cobranças indevidas e reduzir parcelas.",
     features: ["Revisão contratual", "Identificação de abusos", "Redução de parcelas"],
     link: LANDING_PAGES.BUSCA_E_APREENSAO,
-    external: true,
+    external: false,
   },
   {
     icon: Users,
@@ -38,7 +38,7 @@ const servicos = [
       "Orientação completa sobre aposentadoria, benefícios do INSS e planejamento previdenciário para garantir seus direitos.",
     features: ["Cálculo de benefícios", "Planejamento de aposentadoria", "Recursos administrativos"],
     link: LANDING_PAGES.PREVIDENCIARIO,
-    external: true,
+    external: false,
   },
 ];
 

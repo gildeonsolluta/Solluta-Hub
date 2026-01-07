@@ -6,11 +6,22 @@
 
 ## Landing Pages
 
-As landing pages dos serviços estão hospedadas em um repositório separado:
+As landing pages dos serviços estão integradas como rotas locais no mesmo domínio:
 
-**Repositório das Landing Pages**: https://github.com/gildeonsolluta/Landing-Pages.git
+- **Limpa Nome**: `/limpa-nome`
+- **Superendividamento**: `/superendividamento`
+- **Previdenciário**: `/previdenciario`
+- **Revisão de Veículos**: `/revisao-veiculos`
+
+Todas as landing pages são servidas pelo mesmo aplicativo React, usando rotas do React Router.
+
+**Repositório das Landing Pages (código fonte)**: https://github.com/gildeonsolluta/Landing-Pages.git
 
 Para mais informações sobre a configuração das landing pages, consulte o arquivo [CONFIGURACAO_LANDING_PAGES.md](./CONFIGURACAO_LANDING_PAGES.md).
+
+## Deploy no HostGator
+
+Para fazer o deploy no HostGator, consulte o guia completo: [GUIA_DEPLOY_HOSTGATOR.md](./GUIA_DEPLOY_HOSTGATOR.md)
 
 ## How can I edit this code?
 

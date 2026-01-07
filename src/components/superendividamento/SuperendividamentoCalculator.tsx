@@ -4,6 +4,7 @@ import { CalculatorFormSuperendividamento } from "./CalculatorFormSuperendividam
 import { ResultsDisplaySuperendividamento } from "./ResultsDisplaySuperendividamento";
 import ThemeToggle from "@/components/ThemeToggle";
 import sollutaLogo from "@/assets/solluta-logo.png";
+import { Link } from "react-router-dom";
 import { ArrowLeft } from "lucide-react";
 import { LANDING_PAGES } from "@/config/landingPages";
 
@@ -66,13 +67,13 @@ export function SuperendividamentoCalculator() {
       </div>
       <div className="w-full max-w-lg">
         {/* Back Link */}
-        <a 
-          href={LANDING_PAGES.SUPERENDIVIDAMENTO}
+        <Link 
+          to={LANDING_PAGES.SUPERENDIVIDAMENTO}
           className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground mb-6 transition-colors"
         >
           <ArrowLeft className="w-4 h-4" />
           Voltar para a Landing Page
-        </a>
+        </Link>
 
         {/* Card Container */}
         <div className="card-elevated p-6 md:p-8">
