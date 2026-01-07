@@ -17,6 +17,10 @@ Todas as landing pages são servidas pelo mesmo aplicativo React, usando rotas d
 
 **Repositório das Landing Pages (código fonte)**: https://github.com/gildeonsolluta/Landing-Pages.git
 
+O repositório das Landing Pages está incluído como **submódulo Git** na pasta `landing-pages/`. Isso permite manter os projetos separados, mas conectados.
+
+⚠️ **Importante**: As landing pages em produção usam os componentes React do projeto principal (`src/pages/`), não os arquivos do submódulo. O submódulo serve apenas como referência ao código-fonte original.
+
 Para mais informações sobre a configuração das landing pages, consulte o arquivo [CONFIGURACAO_LANDING_PAGES.md](./CONFIGURACAO_LANDING_PAGES.md).
 
 ## Deploy no HostGator
